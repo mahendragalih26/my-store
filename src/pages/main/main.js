@@ -17,18 +17,18 @@ class MainPage extends Component {
             done: true,
             title: "My first task",
             details:
-              "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+              "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
           },
           {
             done: false,
             title: "My second task",
             details:
-              "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur"
-          }
-        ]
+              "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur",
+          },
+        ],
       },
       schema: {
-        title: "Informasi Data Pribadi",
+        title: "Informasi Data Pribadi (Wajib diisi)",
         type: "object",
         required: ["nama"],
         properties: {
@@ -38,7 +38,7 @@ class MainPage extends Component {
             title: "Nama Lengkap",
             default: "",
             minlength: 6,
-            maxlength: 6
+            maxlength: 6,
           },
           nik: {
             type: "string",
@@ -46,7 +46,7 @@ class MainPage extends Component {
             title: "NIK",
             default: "",
             minlength: 0,
-            maxlength: 500
+            maxlength: 500,
           },
           loker: {
             type: "string",
@@ -54,7 +54,7 @@ class MainPage extends Component {
             title: "Loker",
             default: "",
             minlength: 20,
-            maxlength: 20
+            maxlength: 20,
           },
           band: {
             type: "string",
@@ -62,7 +62,7 @@ class MainPage extends Component {
             title: "Band Posisi",
             default: "",
             minlength: 0,
-            maxlength: 500
+            maxlength: 500,
           },
           posisi: {
             type: "string",
@@ -70,7 +70,7 @@ class MainPage extends Component {
             title: "Posisi",
             default: "",
             minlength: 0,
-            maxlength: 500
+            maxlength: 500,
           },
           personal: {
             type: "array",
@@ -82,68 +82,68 @@ class MainPage extends Component {
                 title: {
                   type: "string",
                   title: "Title",
-                  description: "A sample title"
+                  description: "A sample title",
                 },
                 details: {
                   type: "string",
                   title: "Task details",
-                  description: "Enter the task details"
+                  description: "Enter the task details",
                 },
                 done: {
                   type: "boolean",
                   title: "Done?",
-                  default: false
-                }
-              }
-            }
-          }
-        }
+                  default: false,
+                },
+              },
+            },
+          },
+        },
       },
       ui: {
         "ui:ObjectFieldTemplate": this.customField,
         nama: {
           "ui:widget": this.normalInput,
           "ui:options": {
-            label: false
-          }
+            label: false,
+          },
         },
         nik: {
           "ui:widget": this.normalInput,
           "ui:options": {
-            label: false
-          }
+            label: false,
+          },
         },
         loker: {
           "ui:widget": this.normalInput,
           "ui:options": {
-            label: false
-          }
+            label: false,
+          },
         },
         band: {
           "ui:widget": this.normalInput,
           "ui:options": {
-            label: false
-          }
+            label: false,
+          },
         },
         posisi: {
           "ui:widget": this.normalInput,
           "ui:options": {
-            label: false
-          }
+            label: false,
+          },
         },
         personal: {
           "ui:ArrayFieldTemplate": this.customFieldArray,
           items: {
             details: {
-              "ui:widget": "textarea"
-            }
-          }
-        }
-      }
+              "ui:widget": "textarea",
+            },
+          },
+        },
+      },
     };
   }
 
-  CustomTitleField = props => {
+  CustomTitleField = (props) => {
     console.log("Title ", props);
     const legend = props.required ? (
       <div style={{ color: "#616161", fontWeight: "700" }}>
@@ -157,7 +157,7 @@ class MainPage extends Component {
   };
 
   // Dynamic Form Component
-  normalInput = props => {
+  normalInput = (props) => {
     const legend = props.required ? (
       <div>
         {props.schema.title}
@@ -176,7 +176,7 @@ class MainPage extends Component {
             padding: "5px 0px",
             width: "100%",
             outline: "none",
-            fontSize: "20px"
+            fontSize: "20px",
           }}
           type={props.schema.format}
           value={
@@ -185,13 +185,13 @@ class MainPage extends Component {
               : props.value
           }
           required={props.required}
-          onChange={event => props.onChange(event.target.value)}
+          onChange={(event) => props.onChange(event.target.value)}
         />
       </>
     );
   };
 
-  fileInput = props => {
+  fileInput = (props) => {
     const legend = props.required ? (
       <div>
         {props.schema.title}
@@ -212,7 +212,7 @@ class MainPage extends Component {
             padding: "5px 0px",
             width: "100%",
             outline: "none",
-            fontSize: "20px"
+            fontSize: "20px",
           }}
           type="text"
           value={props.value !== undefined ? props.value : "Upload File"}
@@ -223,7 +223,7 @@ class MainPage extends Component {
             display: "flex",
             justifyContent: "flex-end",
             position: "relative",
-            bottom: "45px"
+            bottom: "45px",
           }}
         >
           <label>
@@ -233,7 +233,7 @@ class MainPage extends Component {
               name={props.options.name}
               multiple={props.options.multiple}
               accept={props.options.accept}
-              onChange={event => this.handleChangeFile(event)}
+              onChange={(event) => this.handleChangeFile(event)}
               // onChange={event => props.onChange(event.target.files[0])}
             />
             <div
@@ -241,7 +241,7 @@ class MainPage extends Component {
                 backgroundColor: "#E8AB3A",
                 color: "white",
                 borderRadius: "5px",
-                padding: "10px 25px"
+                padding: "10px 25px",
               }}
             >
               <i>Upload Evidence</i>
@@ -252,7 +252,7 @@ class MainPage extends Component {
     );
   };
 
-  customField = props => {
+  customField = (props) => {
     console.log("custom ", props);
     const legend = props.required ? (
       <div style={{ color: "#616161", fontWeight: "700" }}>
@@ -269,7 +269,7 @@ class MainPage extends Component {
             {legend}
           </div>
           {props.description}
-          {props.properties.map(element => (
+          {props.properties.map((element) => (
             <div className="property-wrapper">{element.content}</div>
           ))}
         </div>
@@ -280,7 +280,7 @@ class MainPage extends Component {
     );
   };
 
-  customFieldArray = props => {
+  customFieldArray = (props) => {
     console.log("Array", props);
     const legend = props.required ? (
       <div style={{ color: "#616161", fontWeight: "700" }}>
@@ -297,7 +297,7 @@ class MainPage extends Component {
           <div className="body-content">
             <div style={{ marginTop: "20px" }}>
               <div>{legend}</div>
-              {props.items.map(element => element.children)}
+              {props.items.map((element) => element.children)}
               {props.canAdd && (
                 <button type="button" onClick={props.onAddClick}></button>
               )}
@@ -310,9 +310,9 @@ class MainPage extends Component {
 
   render() {
     const fields = {
-      TitleField: this.CustomTitleField
+      TitleField: this.CustomTitleField,
     };
-    const log = type => console.log.bind(console, type);
+    const log = (type) => console.log.bind(console, type);
     return (
       <>
         <Form
