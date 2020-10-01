@@ -283,12 +283,12 @@ class MainPage extends Component {
   customFieldArray = (props) => {
     console.log("Array", props);
     const legend = props.required ? (
-      <div style={{ color: "#616161", fontWeight: "700" }}>
+      <div style={{ color: "#616161", fontWeight: "600" }}>
         {props.title}
         <span style={{ color: "red" }}>*</span>
       </div>
     ) : (
-      <div style={{ color: "black", fontWeight: "700" }}>{props.title}</div>
+      <div style={{ color: "black", fontWeight: "600" }}>{props.title}</div>
     );
     return (
       <div className={props.classNames}>
