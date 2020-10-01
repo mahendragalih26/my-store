@@ -16,10 +16,10 @@ class Dashboard extends Component {
               "option #2",
               "option #3",
               "option #4",
-              "option #5"
+              "option #5",
             ],
-            enumNames: ["a", "b", "c", "d", "e"]
-          }
+            enumNames: ["a", "b", "c", "d", "e"],
+          },
         },
         title: "form ukuran besar",
         type: "object",
@@ -27,30 +27,30 @@ class Dashboard extends Component {
         properties: {
           string: {
             type: "string",
-            title: "Some string"
+            title: "Some string",
           },
           choice1: {
-            $ref: "#/definitions/largeEnum"
+            $ref: "#/definitions/largeEnum",
           },
           choice2: {
-            $ref: "#/definitions/largeEnum"
+            $ref: "#/definitions/largeEnum",
           },
           color: {
             type: "string",
             title: "color picker",
-            default: "#151ce6"
+            default: "#151ce6",
           },
           inputcss: {
             type: "string",
-            title: "ui Option"
+            title: "ui Option",
           },
           filesAccept: {
             type: "array",
             title: "sss",
             items: {
               type: "string",
-              format: "data-url"
-            }
+              format: "data-url",
+            },
           },
           alternative: {
             title: "Alternative",
@@ -59,23 +59,23 @@ class Dashboard extends Component {
             properties: {
               "alt-datetime": {
                 type: "string",
-                format: "date-time"
+                format: "date-time",
               },
               "alt-date": {
                 type: "string",
-                format: "date"
-              }
-            }
-          }
-        }
+                format: "date",
+              },
+            },
+          },
+        },
       },
       ui: {
         color: {
-          "ui:widget": "color"
+          "ui:widget": "color",
         },
         inputcss: {
           // "ui:widget": this.inputForm,
-          "ui:widget": props => {
+          "ui:widget": (props) => {
             console.log("custom UI", props);
             const legend = props.required
               ? props.schema.title + "*"
@@ -91,22 +91,22 @@ class Dashboard extends Component {
                     padding: "10px 0px",
                     width: "100%",
                     outline: "none",
-                    fontSize: "20px"
+                    fontSize: "20px",
                   }}
                   type={props.options.inputType}
                   required={props.required}
-                  onChange={event => props.onChange(event.target.value)}
+                  onChange={(event) => props.onChange(event.target.value)}
                 />
               </>
             );
           },
           "ui:options": {
             label: false,
-            inputType: "tel"
-          }
+            inputType: "tel",
+          },
         },
         filesAccept: {
-          "ui:widget": props => {
+          "ui:widget": (props) => {
             console.log("real array = ", props);
             const legend = props.required
               ? props.schema.title + "*"
@@ -128,29 +128,29 @@ class Dashboard extends Component {
           },
           "ui:options": {
             accept: ".pdf, image/*",
-            label: false
-          }
+            label: false,
+          },
         },
         alternative: {
           "alt-datetime": {
             "ui:widget": "alt-datetime",
             "ui:options": {
-              yearsRange: [1980, 2030]
-            }
+              yearsRange: [1980, 2031],
+            },
           },
           "alt-date": {
             "ui:widget": "alt-date",
             "ui:options": {
-              yearsRange: [1980, 2030]
-            }
-          }
-        }
-      }
+              yearsRange: [1980, 2031],
+            },
+          },
+        },
+      },
     };
   }
 
   render() {
-    const log = type => console.log.bind(console, type);
+    const log = (type) => console.log.bind(console, type);
     return (
       <div>
         <Form

@@ -1,6 +1,6 @@
 import React from "react";
 
-const NavbarTop = props => {
+const NavbarTop = (props) => {
   return (
     <div className="header">
       <ul>
